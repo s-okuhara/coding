@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML, CSS and JavaScript demo</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- jQuery.jsの読み込み -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+
+<!-- スムーズスクロール部分の記述 -->
+<script>
+$(function(){
+   // #で始まるアンカーをクリックした場合に処理
+   $('a[href^=#]').click(function() {
+      // スクロールの速度
+      var speed = 400; // ミリ秒
+      // アンカーの値取得
+      var href= $(this).attr("href");
+      // 移動先を取得
+      var target = $(href == "#" || href == "" ? 'html' : href);
+      // 移動先を数値で取得
+      var position = target.offset().top;
+      // スムーススクロール
+      $('body,html').animate({scrollTop:position}, speed, 'swing');
+      return false;
+   });
+});
+</script>
+
+</head>
+<body>
+<!-- Start your code here -->
+<div class="wrapper">
+
+  <h1>【SEO案件】自分で作ったデザインをWordplessでコーディングするときによく使うやーつまとめ</h1>
+
+  <div class="section">
+    <p class="clearfix"><span class="right">2019.6.21 okuhara</p>
+    <p class="b">ここではwordpless投稿画面でのコーディング基礎と、簡単なテンプレを紹介します。</p>
+    <ul class="index">
+      <li><a href="#content01">テキストを追加する</a></li>
+      <li><a href="#content02">画像を入れる</a></li>
+      <li><a href="#content03">見出しを作る</a></li>
+      <li><a href="#content04">ボタンを作る</a></li>
+      <li><a href="#content05">テーブルを作る</a></li>
+      <li><a href="#content06">リストを作る</a></li>
+      <li><a href="#content07">アコーディオンを作る</a></li>
+      <li><a href="#content08">タブを作る</a></li>
+    </ul>
+
+  </div>
+
+  <h2>前提</h2>
+  <p>非公開バックアップ</p>
+
+  <div id="content01" class="section fade_off">
+    <h2>テキストを追加する</h2>
+    <img src="../nonengineer/img/txt.jpg" />
+    <p>SEOで使用しているほとんどのwordpressテーマでは、<span class="b">テキストをそのまま記入することができます。</span></p>
+    <p>これはテーマによってpタグとbrタグが自動的に挿入されるためですが、そのかわり<span class="b">複雑なhtmlやcssの組み方をするとレイアウト崩れの原因となります。</span>（特にアコーディオンやflexbox、タブ表記などに起こりやすい）</p>
+    <p>改行しない、function.phpでpタグの自動挿入を止めるなどの回避方法がありますが、慣れないうちはなるべく簡単な記述で・安全に構築していきましょう。</p>
+
+    <h3>テキストに効果を付ける</h3>
+
+    <p>ほとんどのwordpressテーマでは簡単なクラス名を指定するだけで、特に自分でCSSを書くことがなく文字に効果を付けることができます。</p>
+    <p>たとえば、</p>
+
+    <div class="box-gray">
+      <p class="black">無限に広がる&lt;span class=&quot;<span class="blue">blue</span>&nbsp;<span class="b">b</span>&nbsp;<span class="box-yellow">box-yellow</span>&nbsp;<span class="underline">underline</span>&quot;&gt;<span class="blue b box-yellow underline">大宇宙</span>&lt;/span&gt;</p>
+     </div>
+
+    <p>と記述した場合、特に自分でCSSを書かなくても、青色、太字、背景黄色、下線と、大宇宙を表現できます。</p>
+    <p>使用できるクラス名は以下の通りです。※テーマによって異なる場合があります。</p>
+
+    <h4>文字色</h4>
+    <ul>
+      <li>black → 文字色を黒にする（color : #000 !importantが適用される）</li>
+      <li>red 	→ 文字色を黒にする（color : #ff0000 !importantが適用される）</li>
+      <li>blue 	→ 文字色を青にする（color : #0000dd !importantが適用される）</li>
+      <li>purple 	→ 文字色を紫にする（color : #660099 !importantが適用される）</li>
+      <li>yellow 	→ 文字色を黄色にする（color : #ffff00 !importantが適用される）</li>
+      <li>green	→ 文字色を緑にする（color : #008000 !importantが適用される）</li>
+      <li>navy	→ 文字色を紺色にする（color : #1F26A9 !importantが適用される）</li>
+      <li>orange	→ 文字色を橙色にする（color : #ff6600 !importantが適用される）</li>
+      <li>pink	→ 文字色を桃色にする（color : #cc6699 !importantが適用される）</li>
+      <li>olive	→ 文字色を黄土色にする（color : #808000 !importantが適用される）</li>
+      <li>lime	→ 文字色を黄緑にする（color : #00ff00 !importantが適用される）</li>
+      <li>aqua	→ 文字色を水色にする（color : #167FA6 !importantが適用される）</li>
+      <li>gray	→ 文字色を灰色にする（color : #ccc !importantが適用される）</li>
+      <li>white	→ 文字色を白にする（color : #fff !importantが適用される）</li>
+    </ul>
+
+    <h4>下線や取消線</h4>
+    <ul>
+      <li>underline	→下線を引く（text-decoration: underline!importantが適用される）</li>
+      <li>del	→取り消し線を引く（text-decoration: line-throughが適用される）</li>
+    </ul>
+
+    <h4>蛍光ペンのような背景色を入れる</h4>
+    <ul>
+      <li>box-yellow	→ 背景色を黄色にする</li>
+      <li>box-aqua	→背景色を水色にする</li>
+      <li>box-gray	→背景色を灰色にする</li>
+      <li>box-red	→背景色を赤にする</li>
+    </ul>
+
+    <h4>その他</h4>
+    <ul>
+      <li>b→文字を太くする（font-weight: bold!importantが適用される）</li>
+    </ul>
+
+  </div>
+
+  <div id="content02" class="section fade_off">
+
+    <h2>画像を入れる</h2>
+    <img src="../nonengineer/img/media.jpg" />
+    <p>wordpressの場合、投稿ページ上部の<span class="b">「メディアを追加」から自由に画像を挿入することができます。</span></p>
+    <p>メディアを追加→新規追加・またはドラッグアンドドロップで追加できます。</p>
+    <img src="../nonengineer/img/alt.jpg" />
+    <p>画像を追加するときは、<span class="b">代替テキスト（alt属性）をきちんと入力しましょう。</span></p>
+    <p>alt属性は、検索エンジンロボットに対してどのような画像かを伝えられるので、<span class="b">SEO的に必要な要素です。</span></p>
+    <p>また、何らかの理由で画像が表示されない場合、画像の代わりにテキストで表示できます。</p>
+    <p>なおテキストが書かれていない装飾目的の画像には特にalt属性を入力する必要はありません。</p>
+
+  </div>
+
+  <div id="content03" class="section fade_off">
+
+    <h2>見出しを作る</h2>
+
+    <p>見出し＝タイトルです。以下のように記述します。</p>
+
+    <div class="box-gray">
+
+      <p>&lt;h1&gt;テキスト&lt;/h1&gt;</p>
+      <p>&lt;h2&gt;テキスト&lt;/h2&gt;</p>
+      <p>&lt;h3&gt;テキスト&lt;/h3&gt;</p>
+      <p>&lt;h4&gt;テキスト&lt;/h4&gt;</p>
+      <p>&lt;h5&gt;テキスト&lt;/h5&gt;</p>
+      <p>&lt;h6&gt;テキスト&lt;/h6&gt;</p>
+
+    </div>
+
+    <p>数字が小さくなるにつれて重要度が上がります。</p>
+    <p>&lt;div class="title"&gt;～&lt;/div&gt;に適当なCSSを書いて自分でタイトルくらい作れるのでは？と思うと思います。</p>
+    <p>見出しタグは<span class="b">検索エンジンロボットに対してサイトのコンテンツ構造を伝えられるので、こちらもSEO的に必要な要素です。</span></p>
+
+    <p>この記事では以下のようにH2タイトルを書いています</p>
+    <p class="codepen" data-height="265" data-theme-id="0" data-default-tab="css,result" data-user="naisusumeru" data-slug-hash="jjyRVo" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="jjyRVo">
+  <span>See the Pen <a href="https://codepen.io/naisusumeru/pen/jjyRVo/">
+  jjyRVo</a> by user (<a href="https://codepen.io/naisusumeru">@naisusumeru</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+    <p>ちなみに見出しタグは、</p>
+    <p>&lt;h2&gt;&lt;img src="～.png" alt="タイトル"&gt;&lt;/h2&gt;というように、画像を入れることも可能です。</p>
+    <p>この場合も<span class="b">alt属性を特に忘れずにきちんと書きましょう。</span></p>
+
+    <p>またアイコン付きの見出しについてのテンプレも紹介します。hタグじゃなくても使えるが部分多いと思います。</p>
+    <p class="codepen" data-height="265" data-theme-id="0" data-default-tab="css,result" data-user="naisusumeru" data-slug-hash="BgZgYo" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="BgZgYo">
+    <span>See the Pen <a href="https://codepen.io/naisusumeru/pen/BgZgYo/">
+    BgZgYo</a> by user (<a href="https://codepen.io/naisusumeru">@naisusumeru</a>)
+    on <a href="https://codepen.io">CodePen</a>.</span>
+    </p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+
+
+    <p>細かな見出しタグのルールは以下のサイトが参考になります</p>
+    <p><a href="https://bazubu.com/how-to-use-h-tags-26344.html">見出しタグの使い方と絶対に知っておくべき注意点</a></p>
+    <p>また、CSSで表現できる見出しのデザインは以下が参考になります</p>
+    <p><a href="https://saruwakakun.com/html-css/reference/h-design">CSSのコピペだけ！おしゃれな見出しのデザイン例まとめ68選</a></p>
+
+
+
+  </div>
+
+  <div id="content04" class="section fade_off">
+
+    <h2>ボタンを作る</h2>
+    <p>ボタンは画像で作ることも、またCSSで作ることもできます。</p>
+
+    <p>画像の場合は細かいデザインを表現できることが特徴ですが、モバイル端末やPCで表示に差があるため別々に画像を用意しなければならない場合もあります。</p>
+
+    <p>CSSの場合は細かなデザインを施すことはできませんが、表示するデバイスによって自動的に表示比率を変えられたり、アニメーションをつけることが可能です。（一部は画像でも可能）</p>
+
+    <p>簡単なボタンのHTML/CSSテンプレを作りましたので参考になれば幸いです。</p>
+
+    <h3>今すぐ使えるボタンテンプレ</h3>
+    <p class="codepen" data-height="265" data-theme-id="0" data-default-tab="css,result" data-user="naisusumeru" data-slug-hash="rEjPLz" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="rEjPLz">
+  <span>See the Pen <a href="https://codepen.io/naisusumeru/pen/rEjPLz/">
+  rEjPLz</a> by user (<a href="https://codepen.io/naisusumeru">@naisusumeru</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+    <p>CSSで表現できるボタンデザイン</p>
+    <p><a href="https://saruwakakun.com/html-css/reference/buttons">CSSで作る！押したくなるボタンデザイン100（Web用）</a></p>
+
+    <p>ボタンに使えそうなホバーアニメーション</p>
+    <p><a href="https://www.okuni.me/entry/hover-animation-button-matome">【保存版】CSSだけで作れるホバーアニメーションボタン総まとめ</a></p>
+
+  </div>
+
+  <div id="content05" class="section fade_off">
+
+    <h2>テーブルを作る</h2>
+
+    <p>比較サイトでのメインコンテンツです。</p>
+    <p>テーブルを利用すれば、どのデバイス・ブラウザでも同じように表示でき、かつ構築が簡単なので積極的に使用しましょう。</p>
+
+    <h3>テーブルテンプレ</h3>
+    <p class="codepen" data-height="265" data-theme-id="0" data-default-tab="css,result" data-user="naisusumeru" data-slug-hash="JQExxx" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="JQExxx">
+  <span>See the Pen <a href="https://codepen.io/naisusumeru/pen/JQExxx/">
+  JQExxx</a> by user (<a href="https://codepen.io/naisusumeru">@naisusumeru</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+    <p>テーブルを作成する場合、以下のサイトが便利です。</p>
+    <p><a href="https://tabletag.net/ja/">https://tabletag.net/ja/</a></p>
+    <p>cssは要編集ですが・・・</p>
+
+  </div>
+
+  <div id="content06" class="section">
+
+    <h2>リストを作る</h2>
+
+    <img src="../nonengineer/img/list.jpg" class=""/>
+    <p>wordpress投稿画面ではクイックタグで超簡単にリストを作ることができます。</p>
+    <p>エディタ上部のul、ol、liボタンをクリックすることでリストタグを即座に挿入することが可能です。</p>
+
+    <p>ちなみに、</p>
+    <ul>
+      <li>ul→番号なしリスト</li>
+      <li>ol→番号付きリスト</li>
+    </ul>
+    <p>です。</p>
+
+  </div>
+
+  <div id="content07" class="section">
+
+    <h2>アコーディオンを作る</h2>
+
+    <p>プラグインなどでアコーディオンを作ることができますが、有料の場合が多かったり、無料のものは使い勝手が悪いというデメリットがあります。</p>
+    <p>かといってjsは全然わからないのでとても困りますよね。</p>
+    <p>そこでWebの先人たちの知恵を借りましょう。jsを使わずCSSだけでアコーディオンを作りたい場合、以下のサイトが便利なので参考にしてください。</p>
+
+    <p><a href="https://affirepo.com/stork-customize-accordion/">https://affirepo.com/stork-customize-accordion/</a></p>
+    <p>上記サイトのアコーディオンをチューニングしましたのでこちらも参考にしていただければと思います。</p>
+
+    <p class="codepen" data-height="265" data-theme-id="0" data-default-tab="css,result" data-user="naisusumeru" data-slug-hash="KjaLRm" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="KjaLRm">
+  <span>See the Pen <a href="https://codepen.io/naisusumeru/pen/KjaLRm/">
+  KjaLRm</a> by user (<a href="https://codepen.io/naisusumeru">@naisusumeru</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+    <p>ちなみにこのアコーディオンや後述のタブ表示は、wordpressのpタグ・brタグ自動挿入が原因で<span class="b">レイアウトが崩れたり機能しない可能性もあります。</span></p>
+
+  </div>
+
+  <div id="content08" class="section">
+
+    <h2>タブを作る</h2>
+
+    <p>アコーディオン同様jsゼンゼンワカラナダカラjsを使わずcssのみで作るタブ切り替えを実装していきます。</p>
+    <p>探せばいろいろあるのですが、下記サイトのタブの使用が最も軽く、かつラベルに複数行の入力が可能なのでとても便利です。</p>
+    <p><a href="https://boel.jp/tips/vol86_tabselect.html">https://boel.jp/tips/vol86_tabselect.html</a></p>
+
+    <p>以前使用したもので分かりやすいサンプルがありますのでこちらも参考になれば</p>
+    <p class="codepen" data-height="265" data-theme-id="0" data-default-tab="css,result" data-user="naisusumeru" data-slug-hash="MMpgMV" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="MMpgMV">
+  <span>See the Pen <a href="https://codepen.io/naisusumeru/pen/MMpgMV/">
+  MMpgMV</a> by user (<a href="https://codepen.io/naisusumeru">@naisusumeru</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span></p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+
+  </div>
+
+  <div id="content09" class="section">
+
+    <h2>全体の簡単なテンプレート</h2>
+
+    <p>wordpressで真っ白な固定ページや記事ページの新規投稿画面で泣く前に、構成の簡単なHTML/CSSのテンプレをまとめます。</p>
+    <p>たとえば、このページでは以下のようにシンプルなレイアウトで書かれています。</p>
+
+    <div class="codes">
+      <ol>
+        <li></li>
+        <li>//たとえばここに普通の記事が入る場合</li>
+        <li><span class="white">&lt;div class="section"&gt;</span></li>
+        <li></li>
+        <li><span class="white">&lt;h2&gt;ここに見出しのタイトルが入ります&lt;/h2&gt;</span></li>
+        <li></li>
+        <li><span class="white">テキストが入りますテキストが入ります</span></li>
+        <li><span class="white">テキストが入りますテキストが入ります</span></li>
+        <li></li>
+        <li><span class="white">&lt;h3&gt;ここに見出しのタイトルが入ります&lt;/h3&gt;</span></li>
+        <li></li>
+        <li><span class="white">テキストが入りますテキストが入ります</span></li>
+        <li><span class="white">テキストが入りますテキストが入ります</span></li>
+        <li></li>
+        <li><span class="white">&lt;/div&gt;</span></li>
+        <li></li>
+        <li></li>
+        <li>//たとえばここに比較テーブルが入る場合</li>
+        <li><span class="white">&lt;div class="hikaku"&gt;</span></li>
+        <li></li>
+        <li><span class="white">&lt;table&gt;</span></li>
+        <li><span class="white">&lt;tbody&gt;</span></li>
+        <li></li>
+        <li><span class="white">&lt;tr&gt;</span></li>
+        <li><span class="white">&lt;th&gt;比較対象A&lt;/th&gt;</span></li>
+        <li><span class="white">&lt;th&gt;比較対象B&lt;/th&gt;</span></li>
+        <li><span class="white">&lt;/tr&gt;</span></li>
+        <li></li>
+        <li><span class="white">&lt;tr&gt;</span></li>
+        <li><span class="white">&lt;td&gt;比較項目&lt;/td&gt;</span></li>
+        <li><span class="white">&lt;td&gt;比較項目&lt;/td&gt;</span></li>
+        <li><span class="white">&lt;/tr&gt;</span></li>
+        <li></li>
+        <li><span class="white">&lt;/tbody&gt;</span></li>
+        <li><span class="white">&lt;/table&gt;</span></li>
+        <li></li>
+        <li><span class="white">&lt;/div&gt;</span></li>
+      </ol>
+    </div>
+
+    <p>ここに画像を挿入したりしていけばオッケーです</p>
+    <p>そのままでもテーマ通りのデザインCSSで出力されますが、自分で書いていけばデザイン案通りのページを目指せます。</p>
+    <p>続いて、このページで設定しているCSSです。</p>
+
+    <div class="codes">
+      <ol>
+        <li></li>
+        <li><span class="white">body {</span>/* ページ全体のスタイル */</li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;background: #eee;</span>/* 全体の背景色 */</li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;font-family: Verdana,'メイリオ','ＭＳ Ｐゴシック',sans-serif;</span>/* 全体のフォント */</li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;font-size: 16px;</span>/* 全体のフォントサイズ */</li>
+        <li><span class="white">}</span></li>
+        <li></li>
+        <li></li>
+        <li><span class="white">.wrapper {</span>/* コンテンツのスタイル */</li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;max-width: 720px;</span>/* コンテンツ最大幅。720px以上の幅にはならない。 */</li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;margin: 0 auto;</span>/* 全体に対してコンテンツの空間幅。上下に0、左右はautoで自動的に中央寄せしている */</li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;background: #fff;</span>/* コンテンツの背景色 */</li>
+        <li><span class="white">}</span></li>
+        <li></li>
+        <li>/* SEO案件だとあらかじめ設定されていることが多く、既存の固定ページ・記事ページにも影響を及ぼすのでbody,wrapperを触ることはあまりないと思います。 */</li>
+        <li></li>
+        <li><span class="white">.section {</span>/* divクラス「section」のスタイル */</li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;margin: 0 auto 4em;</span>/* .wrapperに対しての空間幅。上0、左右auto、下46px */</li>
+        <li><span class="white">}</span></li>
+        <li></li>
+        <li><span class="white">.section img {</span>/* divクラス「section」内の画像のスタイル */</li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;max-width: 100%;</span>/* 親要素（section）に対しての画像幅 */</li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;border: solid 1px #ddd;</span>/* 画像枠線。solid（実線）で1pxの#ddd色の線。solid部分値をdottedでドット線、dashedでダッシュ線になります。 */</li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;box-sizing: border-box;</span>/* 画像のpaddingとborderを親要素（section）の高さ・幅に含める。なんか知らんけど画像が要素からはみ出る！とかの場合に有効です。 */</li>
+        <li><span class="white">}</span></li>
+        <li></li>
+        <li><span class="white">.section h2 {</span>/* divクラス「section」内のH2のスタイル */</li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;background: #eaf5fb;</span>/* h2の背景 */</li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;padding: 10px;</span>/* h2の高さ・幅に対してコンテンツ内までの空間幅。上下左右に10pxずつ。 */</li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;border-left: 4px solid #00a0e9;</span>/* 左側にのみボーダーを設定。rightで右側、topで上側、bottomで下側に設定できる。 */</li>
+        <li><span class="white">}</span></li>
+        <li></li>
+        <li><span class="white">.section h3 {</span>/* divクラス「section」内のH3のスタイル */</li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;border-bottom: 1px dashed #00a0e9;</span>/* h3下部にダッシュ線 */</li>
+        <li><span class="white">}</span></li>
+        <li></li>
+        <li></li>…ほか
+        <li></li>
+      </ol>
+    </div>
+
+  </div>
+
+  <div id="content10" class="section">
+
+    <h2>PCとスマホで見た目を変える</h2>
+
+    <p>メディアクエリを使いましょう。便利です。</p>
+    <p>たとへば、以下のようなHTMLで作られた要素があるとします。</p>
+
+    <div class="codes">
+      <ol>
+        <li></li>
+        <li><span class="white">&lt;div class="buttonlist"&gt;</span></li>
+        <li><span class="white">&lt;a href="#url1" class="button01"&gt;ここに見出しのタイトルが入ります&lt;/a&gt;</span></li>
+        <li><span class="white">&lt;a href="#url1" class="button01"&gt;ここに見出しのタイトルが入ります&lt;/a&gt;</span></li>
+        <li><span class="white">&lt;/div&gt;</span></li>
+        <li></li>
+      </ol>
+    </div>
+
+    <p>このbuttonlistで囲まれたbutton01とbutton02を、「PCでは横並び、スマホでは縦並び」にしたい場合、メディアクエリを使えば簡単に画面幅によって見た目を変えられます。</p>
+
+    <div class="codes">
+      <ol>
+        <li>/* 細かいCSSは省略 */</li>
+        <li></li>
+        <li><span class="white">.button01{</span></li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;float: left;</span></li>
+        <li><span class="white">}</span></li>
+        <li></li>
+        <li><span class="white">.button02{</span></li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;float: right;</span></li>
+        <li><span class="white">}</span></li>
+        <li></li>
+        <li><span class="white">@media screen and (max-width: 720px){</span></li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;.button01, .button02{</span></li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float: none;</span></li>
+        <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;}</span></li>
+        <li><span class="white">}</span></li>
+        <li></li>
+      </ol>
+    </div>
+
+    <p>通常はfloatで横並びにして置き、画面幅720px以下だとfloatが解除され縦並びになるという寸法です。</p>
+    <p>これだけではわかりづらいので以下のようになります。</p>
+
+    <p class="codepen" data-height="289" data-theme-id="0" data-default-tab="css,result" data-user="naisusumeru" data-slug-hash="PraYbg" style="height: 289px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="PraYbg">
+    <span>See the Pen <a href="https://codepen.io/naisusumeru/pen/PraYbg/">
+    PraYbg</a> by user (<a href="https://codepen.io/naisusumeru">@naisusumeru</a>)
+    on <a href="https://codepen.io">CodePen</a>.</span>
+    </p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+    <p>この横並びのボタンのCSSですがdisplay:flexを使った方が簡単なのでそちらも試してみてください。メディアクエリ使う必要がありません。</p>
+
+
+
+  </div>
+
+  <div id="content11" class="section">
+    <h2>故障かな？と思ったら</h2>
+
+    <dl>
+      <dt class="b">CSSどこに書くの！</dt>
+      <dd>
+        <p>Wordpress管理画面の「外観」→「カスタマイズ」→「追加CSS」から入力可能です。ログインしていれば、任意のページから追加CSSを入力することができ、リアルタイムで反映されます。また、「外観」→「テーマエディター」からも入力可能です。</p>
+      </dd>
+
+      <dt class="b">書いたCSSが反映されないんだけど？</dt>
+      <dd>
+        <p>1.指定したクラス名、プロパティ、値が間違っている。2.適切でないプロパティor値を指定している。3.セミコロン（;）、波括弧（｝）の書き忘れ。4.テーマで使用している既存のCSSや、別のCSSと競合している…などが考えられます。</p>
+        <p>1・2・3の場合は正しいクラス名やCSSプロパティに直すことで問題なく動くかもしれません。コードを見直してみましょう。</p>
+        <p>4の場合は競合するCSSが指定されているかもしれません。webブラウザの開発者ツールで他のCSSが競合していないか確認してみましょう。テーマで指定されている場合、自分で書いたCSSの優先順位を上げましょう。例えば、</p>
+        <p>.section aで指定されている場合、 .section .button aと、より詳しく指定するとCSSの優先順位が上がります。</p>
+        <p>また、color:#ff0000 !important;のように、優先順位を上げたい値の末尾に!importantと書くとそちらが優先されます。</p>
+      </dd>
+
+      <dt class="b">サイドカラムが消えた！or下に落ちた！</dt>
+      <dd>
+        <p>divの閉じわすれや、余計な/divはありませんか？</p>
+        <p>こちらも開発者ツールから探すことができます。</p>
+      </dd>
+
+      <dt class="b">jQuery使いたい！どこに書くの？</dt>
+      <dd>
+        <p>header.phpのwp_head();の下に書いてください。</p>
+        <p>例外はありますが管理画面からは更新できないことが多いので、FTPクライアントの導入が必須です。phpファイルをそのまま触るので、最悪サイトが壊れます。バックアップ必須です。</p>
+        <p><a href="https://primarytext.jp/blog/1298">jQueryをWordPressで使う場合の読み込み方と使い方</a></p>
+      </dd>
+
+      <dt class="b">pタグとbrタグの自動挿入うざい！</dt>
+      <dd>
+        <p>1.慣れる　2.function.phpを書き換えるの二つの方法があります。</p>
+        <p>function.phpへ下記リンクを参考にコードを書き加えることで、自動挿入停止のカスタムフィールドを作ることができます。</p>
+        <p><a href="https://pera-lab.com/archives/1508">[WordPress]この記事だけでいい！特定の記事、固定ページだけでHTMLの自動整形を無効化する方法</a></p>
+        <p>でも、慣れたほうが早くて楽です。</p>
+      </dd>
+
+
+
+    </dl>
+
+  </div>
+
+</div>
+
+<!-- End your code here -->
+</body>
+</html>

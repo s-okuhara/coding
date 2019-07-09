@@ -1,0 +1,100 @@
+body{
+  background: #ddd;
+  font-family: Verdana,'メイリオ','ＭＳ Ｐゴシック',sans-serif;
+  font-size: 16px;
+}
+
+.wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2em;
+  color: #333;
+  background: #fff;
+}
+
+img{
+  max-width: 100%;
+  box-sizing: border-box;
+  border: solid 1px #ddd;
+}
+
+.section{
+  margin: 0 auto 4em;
+}
+
+
+h2{
+  background: #eaf5fb;
+  padding: 10px;
+  border-left: 4px solid #00a0e9;
+}
+
+h3{
+  border-bottom: 1px dashed #00a0e9;
+}
+
+h4{
+  margin: 1em auto 0;
+}
+
+.b{ font-weight: bold!important; }/*太字*/
+
+.black{
+  color: #000!important;
+}
+
+.box-yellow{
+  background: #ffff00;
+  padding: 2px;
+}
+
+.box-gray{
+  padding: 1em;
+  background: #ddd;
+}
+
+.white{
+  color: #fff !important;
+}
+
+.blue {
+  color : #0000dd !important
+}
+
+.underline{
+  text-decoration: underline;
+}
+
+.right {
+  float: right;
+}
+
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.index li{
+  list-style-type: decimal;
+}
+
+.codes {
+  background: #333;
+  color: #777;
+  padding: 1em;
+  border-radius: 8px;
+}
+
+/* FAQ */
+
+dt {
+  margin: 2em auto 0;
+  border-bottom: 1px solid #999;
+  padding-bottom: .5em;
+}
+
+dd{
+  padding: 1em;
+  margin-inline-start: 0;
+}
