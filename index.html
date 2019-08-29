@@ -27,35 +27,31 @@ $(function(){
       $('body,html').animate({scrollTop:position}, speed, 'swing');
       return false;
    });
-   
-   // Animated.css
-   $(window).on('load scroll', function(){
+});
+// Animated.css
+$(window).on('load scroll', function(){
 
-     //animatedのclassを持った要素をセレクタに指定
-     var elem = $('.animated');
+  //animatedのclassを持った要素をセレクタに指定
+  var elem = $('.animated');
 
-     elem.each(function () {
+  elem.each(function () {
 
-       //data属性からアニメーション名を取得
-       var isAnimate = $(this).data('animate');
-       //animated要素に位置を取得
-       var elemOffset = $(this).offset().top;
-       //現在のスクロールポジションを取得
-       var scrollPos = $(window).scrollTop();
-       //ウィンドウの高さを取得
-       var wh = $(window).height();
+    //data属性からアニメーション名を取得
+    var isAnimate = $(this).data('animate');
+    //animated要素に位置を取得
+    var elemOffset = $(this).offset().top;
+    //現在のスクロールポジションを取得
+    var scrollPos = $(window).scrollTop();
+    //ウィンドウの高さを取得
+    var wh = $(window).height();
 
-       //animated要素がウィンドウ内の中央位置にきたら処理
-       if(scrollPos > elemOffset - wh + (wh / 2)){
-         $(this).addClass(isAnimate);
-       }
-     });
-   });
-
-
+    //animated要素がウィンドウ内の中央位置にきたら処理
+    if(scrollPos > elemOffset - wh + (wh / 2)){
+      $(this).addClass(isAnimate);
+    }
+  });
 
 });
-
 </script>
 
 </head>
