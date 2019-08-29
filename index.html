@@ -3,10 +3,12 @@
 <head>
 <title>HTML, CSS and JavaScript demo</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="animate.min.css">
 
 <meta name="robots" content="noindex">
 <!-- jQuery.jsの読み込み -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <!-- スムーズスクロール部分の記述 -->
 <script>
@@ -25,6 +27,30 @@ $(function(){
       $('body,html').animate({scrollTop:position}, speed, 'swing');
       return false;
    });
+});
+// Animated.css
+$(window).on('load scroll', function(){
+
+  //animatedのclassを持った要素をセレクタに指定
+  var elem = $('.animated');
+
+  elem.each(function () {
+
+    //data属性からアニメーション名を取得
+    var isAnimate = $(this).data('animate');
+    //animated要素に位置を取得
+    var elemOffset = $(this).offset().top;
+    //現在のスクロールポジションを取得
+    var scrollPos = $(window).scrollTop();
+    //ウィンドウの高さを取得
+    var wh = $(window).height();
+
+    //animated要素がウィンドウ内の中央位置にきたら処理
+    if(scrollPos > elemOffset - wh + (wh / 2)){
+      $(this).addClass(isAnimate);
+    }
+  });
+
 });
 </script>
 
@@ -61,28 +87,28 @@ $(function(){
     <p>楽しいデザイン作業が終わると、次は作成したデザインをサイト上に落とし込む楽しい作業です。</p>
     <p>SEO担当者からwordpressのログインIPとパスワードを聞き、url欄から改善するサイトのサブディレクトリ(ドメインの下の階層)に「wp-admin」と打ち込み管理者ページに移動しましょう。（例：https://改善するサイト.com/wp-admin）</p>
     <p>管理者ページにログインすると、ごちゃごちゃした「ダッシュボード画面」が表示され混乱しますが、まずは落ち着いて左の項目リストから「投稿」か「固定ページ」をクリックしてください。</p>
-    <img src="img/front01.jpg" />
+    <img src="img/front01.jpg" class="animated" data-animate="fadeInUp" />
     <p>すると、さまざまなページの一覧が表示されます。</p>
     <p>いきなり本番ページを触って不具合を起こしてしまわないように、仮ページを作って作業環境を作りましょう。</p>
     <p>画面上の「新規追加」ボタンをクリックします。</p>
-    <img src="img/front02.jpg" />
+    <img src="img/front02.jpg" class="animated" data-animate="fadeInUp" />
     <p>すると、ページ編集画面が表示されると思います。</p>
     <p>ここに、自分がデザインしたページのhtmlコーディングをしていきます。</p>
     <p>まずはタイトルを付けてページを公開しましょう。</p>
     <p>そのまま作業しても問題はないのですが、作業中のデータをパブリックのままにするとどんな不具合があるかわかりません。SEO的にも問題があるかもしれません。</p>
     <p>右側の公開メニューから、公開状態を「非公開」に設定し、公開ボタンをクリックしましょう。</p>
-    <img src="img/front03.jpg" />
+    <img src="img/front03.jpg" class="animated" data-animate="fadeInUp" />
     <p>これで仮ページの作成が完了です。</p>
     <p>編集画面タイトル部分下のパーマリンクが生成されていると思いますので、そこをクリックすれば仮ページが表示されます。</p>
     <p>編集ページに書いたものがこのページに反映されます。確認しながら実装していきましょう。</p>
-    <img src="img/front04.jpg" />
+    <img src="img/front04.jpg" class="animated" data-animate="fadeInUp" />
     <P>これでサイトの骨組みとなるHTMLコードを書くことができます。</P>
     <P>つぎに、サイトの装飾であるCSSを書く準備をしましょう。</P>
-    <img src="img/front05.jpg" />
+    <img src="img/front05.jpg" class="animated" data-animate="fadeInUp" />
     <P>さきほど生成されたテストページ上部に表示されている、「カスタマイズ」をクリックしてください。</P>
-    <img src="img/front06.jpg" />
+    <img src="img/front06.jpg" class="animated" data-animate="fadeInUp" />
     <P>カスタマイズ画面が表示されるので、追加CSSという項目をクリックしてください。</P>
-    <img src="img/front07.jpg" />
+    <img src="img/front07.jpg" class="animated" data-animate="fadeInUp" />
     <P>ここでリアルタイムでページを確認しながらCSSを記述することができます。</P>
     <P>注意してほしいのですが、ここに記述したCSSはサイト全体に反映され、既存のクラスやIDに影響を及ぼすので、テスト実装中や限定的なパーツにスタイルを加えたい場合はユニークなクラス名を付ける必要があります。</P>
     <p>これでwordpressでのコーディングの準備はOKです。</p>
@@ -105,7 +131,7 @@ $(function(){
 
   <div id="content01" class="section fade_off">
     <h2>テキストを追加する</h2>
-    <img src="img/txt.jpg" />
+    <img src="img/txt.jpg" class="animated" data-animate="fadeInUp" class="animated" data-animate="fadeInUp" />
     <p>SEOで使用しているほとんどのwordpressテーマでは、<span class="b">テキストをそのまま記入することができます。</span></p>
     <p>これはテーマによってpタグとbrタグが自動的に挿入されるためですが、そのかわり<span class="b">複雑なhtmlやcssの組み方をするとレイアウト崩れの原因となります。</span>（特にアコーディオンやflexbox、タブ表記などに起こりやすい）</p>
     <p>改行しない、function.phpでpタグの自動挿入を止めるなどの回避方法がありますが、慣れないうちはなるべく簡単な記述で・安全に構築していきましょう。</p>
@@ -164,10 +190,10 @@ $(function(){
   <div id="content02" class="section fade_off">
 
     <h2>画像を入れる</h2>
-    <img src="img/media.jpg" />
+    <img src="img/media.jpg" class="animated" data-animate="fadeInUp" />
     <p>wordpressの場合、投稿ページ上部の<span class="b">「メディアを追加」から自由に画像を挿入することができます。</span></p>
     <p>メディアを追加→新規追加・またはドラッグアンドドロップで追加できます。</p>
-    <img src="img/alt.jpg" />
+    <img src="img/alt.jpg" class="animated" data-animate="fadeInUp" />
     <p>画像を追加するときは、<span class="b">代替テキスト（alt属性）をきちんと入力しましょう。</span></p>
     <p>alt属性は、検索エンジンロボットに対してどのような画像かを伝えられるので、<span class="b">SEO的に必要な要素です。</span></p>
     <p>また、何らかの理由で画像が表示されない場合、画像の代わりにテキストで表示できます。</p>
@@ -279,7 +305,7 @@ $(function(){
 
     <h2>リストを作る</h2>
 
-    <img src="img/list.jpg" class=""/>
+    <img src="img/list.jpg" class="animated" data-animate="fadeInUp"/>
     <p>wordpress投稿画面ではクイックタグで超簡単にリストを作ることができます。</p>
     <p>エディタ上部のul、ol、liボタンをクリックすることでリストタグを即座に挿入することが可能です。</p>
 
@@ -533,9 +559,9 @@ $(function(){
 
     <p>Shortcode Ultimateプラグインを使用すれば、複雑な設定を行うことなく簡単にアニメーション機能を使用することが可能です。</p>
     <p>Shortcode Ultimateプラグインがインストールされている場合、記事投稿ページ上部の「[]ショートコードを挿入」というボタンがあるので、そこをクリックしてください。</p>
-    <img src="img/shortcodeultimate.jpg" />
+    <img src="img/shortcodeultimate.jpg" class="animated" data-animate="fadeInUp" />
     <p>便利なショートコードの一覧が表示されるので、その中からアニメーションをクリックしてアニメーションショートコードを挿入します</p>
-    <img src="img/shortcodeultimate_02.jpg" />
+    <img src="img/shortcodeultimate_02.jpg" class="animated" data-animate="fadeInUp" />
     <p>アニメーションの設定画面が表示されます。アニメーションの種類については</p>
     <p><a href="https://daneden.github.io/animate.css/">Animate.cssから確認することができます。</a></p>
     <p>設定が完了し、ショートコードを挿入ボタンをクリックします。</p>
