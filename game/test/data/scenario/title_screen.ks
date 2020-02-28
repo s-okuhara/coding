@@ -6,6 +6,7 @@
 
 [tb_keyconfig  flag="0"  ]
 [tb_hide_message_window  ]
+[tb_ptext_show  x="157"  y="141"  size="30"  color="0x000000"  time="1000"  text="ノベルゲームのテストです"  anim="false"  face="fantasy"  edge="undefined"  shadow="undefined"  ]
 [bg  storage="title.jpg"  ]
 *title
 
@@ -13,6 +14,7 @@
 [s  ]
 *start
 
+[tb_ptext_hide  time="1000"  ]
 [showmenubutton]
 
 [cm  ]

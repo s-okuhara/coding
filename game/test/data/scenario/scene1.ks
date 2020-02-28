@@ -20,7 +20,7 @@
 [_tb_end_text]
 
 [glink  color="black"  storage="sccene2.ks"  size="20"  text="見た"  x="154"  y="233"  width=""  height=""  _clickable_img=""  ]
-[glink  color="black"  storage="scene1.ks"  size="20"  text="見なかった"  x="342"  y="228"  width="93"  height="21"  _clickable_img=""  target="*&nbsp;site"  ]
+[glink  color="black"  storage="scene1.ks"  size="20"  text="見なかった"  x="342"  y="228"  width="93"  height="21"  _clickable_img=""  target="*site"  ]
 [s  ]
 *site
 
@@ -29,12 +29,13 @@
 ドラえもん「ならキレイモがおすすめだ！」[p]
 [_tb_end_text]
 
-[glink  color="black"  storage="scene1.ks"  size="20"  text="キレイモを詳しく見る"  target="*キレイモ"  x="197"  y="201"  width=""  height=""  _clickable_img=""  ]
+[tb_hide_message_window  ]
+[glink  color="black"  storage="scene1.ks"  size="20"  text="キレイモを詳しく見る"  target="*キレイモ"  x="199"  y="230"  width=""  height=""  _clickable_img=""  ]
 [s  ]
 *キレイモ
 
-[web url="http://google.co.jp/"]
+[web url="https://kireimo.jp/"]
 
-[glink  color="black"  storage="title_screen.ks"  size="20"  text="最初から"  ]
+[glink  color="black"  storage="title_screen.ks"  size="20"  text="最初から"  x="249"  y="219"  width=""  height=""  _clickable_img=""  ]
 [chara_hide_all  time="1000"  wait="true"  ]
 [s  ]
