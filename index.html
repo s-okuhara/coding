@@ -78,6 +78,9 @@ $(window).on('load scroll', function(){
       <li><a href="#content11">吹き出しを作る</a></li>
       <li><a href="#content12">アニメーションをつける</a></li>
       <li><a href="#content13">複数の画像に同一の額縁を付ける</a></li>
+      <li><a href="#content14">項目を固定してスクロールできるテーブルを作る</a></li>
+      <li><a href="#content15">ノベルゲーム風のアレを作る</a></li>
+      <li><a href="#content16">JS\jQueryを書く場所</a></li>
       <li><a href="#faq">故障かな？と思ったら</a></li>
     </ul>
 
@@ -621,6 +624,29 @@ $(window).on('load scroll', function(){
 
   </div>
 
+  <div id="content16" class="section">
+    <h2>JS/jQueryを書く場所について</h2>
+    <p>以前FAQで軽く触れていたのですが、いくつかJS/jQueryを書く場所についてご紹介します。</p>
+    <dl>
+      <dt class="b">header.phpに直接記述する</dt>
+      <dd>
+        <p>FileZillaなどのFTPソフトを使用して、テーマ内のheader.phpに直接記述する方法です。</p>
+        <p>header.phpのwp_head();の下に書いてください。テーマのphpを直接編集するため、バックアップをきちんと取りましょう。</p>
+      </dd>
+      <dt class="b">【プラグイン】Custom CSS & JSを利用する</dt>
+      <dd>
+        <p>header.phpを直接編集せずとも、さまざまなカスタマイズコードの記述が可能です。</p>
+        <p>コードのハイライト機能が備わっていて、記入ミス・エラーに気づきやすく便利です。</p>
+        <p>テーマに依存せず、サイトを壊すリスクも低いためこちらの仕様をオススメします。</p>
+      </dd>
+      <dt class="b">投稿ページ下部の「この投稿だけの個別CSS/JS記述欄」に記述する</dt>
+      <dd>
+        <p>こちらもheader.phpを直接編集せずに、CSS、JSの記述が可能です。</p>
+        <p>上記プラグインのようにコードのハイライトがないため、エラーに気づきにくいですが、プラグインを極力導入したくない場合はこちらがオススメです。</p>
+      </dd>
+    </dl>
+  </div>
+
 
 
 
@@ -664,9 +690,9 @@ $(window).on('load scroll', function(){
 
       <dt class="b">jQuery使いたい！どこに書くの？</dt>
       <dd>
-        <p>header.phpのwp_head();の下に書いてください。</p>
-        <p>例外はありますが管理画面からは更新できないことが多いので、FTPクライアントの導入が必須です。phpファイルをそのまま触るので、最悪サイトが壊れます。バックアップ必須です。</p>
-        <p><a href="https://primarytext.jp/blog/1298">jQueryをWordPressで使う場合の読み込み方と使い方</a></p>
+        <p style="text-decoration: line-through">header.phpのwp_head();の下に書いてください。</p>
+        <p style="text-decoration: line-through">例外はありますが管理画面からは更新できないことが多いので、FTPクライアントの導入が必須です。phpファイルをそのまま触るので、最悪サイトが壊れます。バックアップ必須です。</p>
+        <p><a href="#content16">JS/jQueryを書く場所について</a></p>
       </dd>
 
       <dt class="b">pタグとbrタグの自動挿入うざい！</dt>
