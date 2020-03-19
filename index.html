@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <title>HTML, CSS and JavaScript demo</title>
 <link rel="stylesheet" href="style.css">
@@ -7,7 +7,7 @@
 
 <meta name="robots" content="noindex">
 <!-- jQuery.jsの読み込み -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <!-- スムーズスクロール部分の記述 -->
@@ -453,7 +453,7 @@ $(window).on('load scroll', function(){
         <li><span class="white">&nbsp;&nbsp;&nbsp;&nbsp;border-bottom: 1px dashed #00a0e9;</span>/* h3下部にダッシュ線 */</li>
         <li><span class="white">}</span></li>
         <li></li>
-        <li></li>…ほか
+        <li>…ほか</li>
         <li></li>
       </ol>
     </div>
@@ -646,6 +646,22 @@ $(window).on('load scroll', function(){
       </dd>
     </dl>
   </div>
+
+  <div class="section" id="content17">
+		<h2>リストやテーブル（TR）をアコーディオンでn件ずつ表示し、最大に達した場合元に戻すやーつ</h2>
+		<p class="codepen" data-default-tab="js,result" data-height="265" data-pen-title="QWbjevg"
+		data-slug-hash="QWbjevg" data-theme-id="dark" data-user="naisusumeru" style=
+		"height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+		<span>See the Pen <a href="https://codepen.io/naisusumeru/pen/QWbjevg">QWbjevg</a> by user
+		(<a href="https://codepen.io/naisusumeru">@naisusumeru</a>) on <a href=
+		"https://codepen.io">CodePen</a>.</span></p>
+		<script async src="https://static.codepen.io/assets/embed/ei.js">
+		</script>
+		<p>jQueryを使用していますので、使用する場合は<a href="#content16">こちら</a>を参照してください。</p>
+		<p>同一ページ内に二つ以上設定する場合、別のIDを設定する必要があります。</p>
+		<p>
+		横スクロール可能なテーブルに設定した場合、もっと見るボタンが初期値から動かない（スクロールすると左に隠れる）ため、CSSにposition:stickyを設定し、leftとrightとを調整して画面位置を固定してください。</p>
+	</div>
 
 
 
